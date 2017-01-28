@@ -1,14 +1,14 @@
 test('can use shorthand for property names', () => {
   function createMonster(name, power) {
     // Using NEW Object Literal Syntax, return a literal that will allow the tests to pass
-    // return {
-    //   type: 'Monster',
-    //   name: name,
-    //   power: power,
-    //   attack: function (target){
-    //     return `${this.name} attacked ${target.name}`;
-    //   }
-    // }
+    return {
+      type: 'Monster',
+      name,
+      power,
+      attack (target) {
+        return `${this.name} attacked ${target.name}`;
+      }
+    }
   }
 
   const godzilla = createMonster('Godzilla', 1000)
@@ -23,6 +23,7 @@ test('can use expressions as property names', () => {
     return {
       tasty: true,
       type,
+      [type.toUpperCase() + type.length]: description,
       // add a expression as property name where the property name is the given type.toUpperCase() + type.length
       // sound contrived? It is... 😅
     }

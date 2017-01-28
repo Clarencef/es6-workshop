@@ -1,50 +1,34 @@
 test(`should resolve`, () => {
   return pickApple('ripe')
     .then(result => {
-      // throw new Error('this should not run')
-      // expect(result).toBe(/*ENTER GUESS HERE*/)
-      throw new Error('assert or throw here')
+      expect(result).toBe('ripe apple')
     }, error => {
-      // throw new Error('this should not run')
-      // expect(error).toBe(/*ENTER GUESS HERE*/)
-      throw new Error('assert or throw here')
+      throw new Error('this should not run')
     })
     .catch(error => {
-      // throw new Error('this should not run')
-      // expect(error).toBe(/*ENTER GUESS HERE*/)
-      throw new Error('assert or throw here')
+      throw new Error('this should not run')
     })
 })
 
 test(`should reject`, () => {
   return pickApple('unripe')
     .then(result => {
-      // throw new Error('this should not run')
-      // expect(result).toBe(/*ENTER GUESS HERE*/)
-      throw new Error('assert or throw here')
+      throw new Error('this should not run')
     }, error => {
-      // throw new Error('this should not run')
-      // expect(error).toBe(/*ENTER GUESS HERE*/)
-      throw new Error('assert or throw here')
+      expect(error).toBe('unripe apple')
     })
     .catch(error => {
-      // throw new Error('this should not run')
-      // expect(error).toBe(/*ENTER GUESS HERE*/)
-      throw new Error('assert or throw here')
+      throw new Error('this should not run')
     })
 })
 
 test(`errors can be caught`, () => {
   return pickApple()
     .then(result => {
-      // throw new Error('this should not run')
-      // expect(result).toBe(/*ENTER GUESS HERE*/)
       throw new Error('assert or throw here')
     })
     .catch(error => {
-      // throw new Error('this should not run')
-      // expect(error).toBe(/*ENTER GUESS HERE*/)
-      throw new Error('assert or throw here')
+      expect(error.message).toBe('out of apples')
     })
 })
 
