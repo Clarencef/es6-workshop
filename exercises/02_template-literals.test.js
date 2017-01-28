@@ -11,7 +11,9 @@ test('should support string interpolation', () => {
     ],
   }
   // construct a string using template literal string interpolation
-  const personsFriends = ``
+  const personsFriends = `${person.name} has ${person.friends.length} friends:${person.friends.map((item)=>{
+    return ` ${item}`
+  })}`
   expect(personsFriends).toBe(
     'Kent C. Dodds has 6 friends: Brooke Dodds, Matt Zabriskie, Aaron Frost, Dave Geddes, Joe Eames, Ryan Florence'
   )
@@ -19,21 +21,24 @@ test('should support string interpolation', () => {
 
 test(`should support multi-line strings`, () => {
   // construct a string with multiple lines without needing escaped newline characters
-  const multiLine = ``
+  const multiLine = `
+    How cool
+    is this!?
+  `
   expect(multiLine).toBe('\n    How cool\n    is this!?\n  ')
 })
 
 test(`should support string escaping`, () => {
   // properly escape a string in a template literal for each of these
-  expect(``).toBe('Hi\nthere!')
-  expect(``).toBe('This is `escaped` backtics')
+  expect(`Hi\nthere!`).toBe('Hi\nthere!')
+  expect(`This is \`escaped\` backtics`).toBe('This is `escaped` backtics')
 })
 
 
 //////// EXTRA CREDIT ////////
 
 // you likely won't often use tagging, but it can be handy!
-test.skip(`should call the tagging function`, () => {
+test(`should call the tagging function`, () => {
   const noun = 'World'
   const emotion = 'happy'
   const result = tagIt`Hello ${noun}! Are you feeling ${emotion} today?`
@@ -41,7 +46,7 @@ test.skip(`should call the tagging function`, () => {
 
   function tagIt(literalString, ...interpolatedParts) {
     // implement this function to make the test pass
-    return 'fixme'
+    return literalString[0]+ "super-cool " + interpolatedParts[0] +literalString[1]+'really '+interpolatedParts[1]+literalString[2]
   }
 })
 
